@@ -9,14 +9,15 @@ const API_KEY = process.env.API_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/forecast';
 
 class Forecast {
-    constructor(date, temp, description, humidity) {
+    constructor(date, temperature, description, humidity) {
         this.date = date;
-        this.temp = temp;
+        this.temperature = temperature;
         this.description = description;
         this.humidity = humidity;
     }
 }
 
+app.use(express.static('public'));
 
 app.get('/api/forecast', async (req, res) => {
     const city = req.query.city;
