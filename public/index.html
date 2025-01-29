@@ -6,25 +6,25 @@
     <title>Clima App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div>
-        <h1>Pronóstico del Clima</h1>
+<body class="bg-light">
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Pronostico del Clima</h1>
 
-        <form id="forecast-form">
-            <div>
-                <input type="text" id="city-input" placeholder="Ingresa una ciudad">
-                <button type="submit">Buscar</button>
+        <form id="forecast-form" class="mb-4">
+            <div class="input-group">
+                <input type="text" id="city-input" class="form-control" placeholder="Ingresa una ciudad">
+                <button type="submit" class="btn btn-primary">Buscar</button>
             </div>
         </form>
 
         <div id="forecast-result" class="d-none">
-            <h3 id="forecast-city"></h3>
-            <table>
+            <h3 id="forecast-city" class="text-center mb-3"></h3>
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Fecha y Hora</th>
                         <th>Temperatura °C</th>
-                        <th>Descripción</th>
+                        <th>Descripcion</th>
                         <th>Humedad %</th>
                     </tr>
                 </thead>
