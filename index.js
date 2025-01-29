@@ -8,6 +8,16 @@ const PORT = 3000;
 const API_KEY = process.env.API_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/forecast';
 
+class Forecast {
+    constructor(date, temp, description, humidity) {
+        this.date = date;
+        this.temp = temp;
+        this.description = description;
+        this.humidity = humidity;
+    }
+}
+
+
 app.get('/api/forecast', async (req, res) => {
     const city = req.query.city;
 
@@ -20,7 +30,17 @@ app.get('/api/forecast', async (req, res) => {
             },
         });
 
-        res.json(response.data);
+        const forecasts = response.data.list.map(item => new Forecast(
+            item.dt_txt,
+            item.main.temp,
+            item.weather[0].description,
+            item.main.humidity
+        ));
+
+        res.json({
+            city: response.data.city.name,
+            forecasts: forecasts, 
+        });
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener el pronóstico.' });
     }
