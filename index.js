@@ -35,12 +35,13 @@ app.get('/api/forecast', async (req, res) => {
             item.dt_txt,
             item.main.temp,
             item.weather[0].description,
-            item.main.humidity
+            item.main.humidity,
         ));
 
         res.json({
             city: response.data.city.name,
-            forecasts: forecasts, 
+            country: response.data.city.country,
+            forecasts: forecasts,
         });
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener el pronóstico.' });
